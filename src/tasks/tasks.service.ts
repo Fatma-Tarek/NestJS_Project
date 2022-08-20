@@ -28,7 +28,13 @@ export class TasksService {
     }
 
     deleteTask(taskId: string){
-        this.tasks= this.tasks.filter(row=>  row.id != taskId)
+        this.tasks= this.tasks.filter(row=>  row.id !== taskId);
         return 'Task deleted sucessfuly'
+    }
+
+    updateTaskStatus(taskId: string, status: TaskStatus){        
+        let index = this.tasks.findIndex(obj => obj.id == taskId);
+        this.tasks[index].status = status
+        return this.tasks[index];
     }
 }
